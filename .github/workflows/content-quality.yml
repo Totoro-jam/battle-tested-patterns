@@ -16,7 +16,7 @@ jobs:
     name: Verify pattern template completeness
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Check required sections in all patterns
@@ -58,7 +58,7 @@ jobs:
     name: Verify exercises exist for patterns
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Check exercise files
         run: |
           exit_code=0
