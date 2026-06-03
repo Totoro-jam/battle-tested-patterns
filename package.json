@@ -22,7 +22,7 @@
     "changelog": "changelogen --output CHANGELOG.md"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.6.1",
+    "@commitlint/cli": "^21.0.2",
     "@commitlint/config-conventional": "^19.6.0",
     "changelogen": "^0.6.1",
     "markdownlint-cli": "^0.44.0",
