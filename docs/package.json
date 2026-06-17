@@ -11,7 +11,7 @@
     "test:watch": "vitest"
   },
   "devDependencies": {
-    "@playwright/test": "^1.60.0",
+    "@playwright/test": "^1.61.0",
     "@vitejs/plugin-vue": "^6.0.7",
     "@vue/test-utils": "^2.4.11",
     "comma-separated-tokens": "^2.0.3",
