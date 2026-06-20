@@ -268,6 +268,7 @@ pnpm dev                          # 本地文档站
   <tbody>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Totoro-jam"><img src="https://avatars.githubusercontent.com/u/62227038?v=4?s=100" width="100px;" alt="Totoro-jam"/><br /><sub><b>Totoro-jam</b></sub></a><br /><a href="https://github.com/Totoro-jam/battle-tested-patterns/commits?author=Totoro-jam" title="Code">💻</a> <a href="https://github.com/Totoro-jam/battle-tested-patterns/commits?author=Totoro-jam" title="Documentation">📖</a> <a href="#design-Totoro-jam" title="Design">🎨</a> <a href="#maintenance-Totoro-jam" title="Maintenance">🚧</a> <a href="#ideas-Totoro-jam" title="Ideas, Planning, & Feedback">🤔</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://www.cyberfeng.com"><img src="https://avatars.githubusercontent.com/u/540892?v=4?s=100" width="100px;" alt="Raymond Feng"/><br /><sub><b>Raymond Feng</b></sub></a><br /><a href="https://github.com/Totoro-jam/battle-tested-patterns/commits?author=raymondfeng" title="Code">💻</a> <a href="https://github.com/Totoro-jam/battle-tested-patterns/commits?author=raymondfeng" title="Documentation">📖</a> <a href="#ideas-raymondfeng" title="Ideas, Planning, & Feedback">🤔</a></td>
     </tr>
   </tbody>
 </table>
