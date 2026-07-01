@@ -34,8 +34,8 @@ importers:
         specifier: ^9.33.0
         version: 9.33.0(eslint@9.39.4(jiti@2.6.1))
       globals:
-        specifier: ^17.6.0
-        version: 17.6.0
+        specifier: ^17.7.0
+        version: 17.7.0
       husky:
         specifier: ^9.1.7
         version: 9.1.7
@@ -98,7 +98,7 @@ importers:
         version: 11.15.0
       vitepress:
         specifier: ^1.6.4
-        version: 1.6.4(@algolia/client-search@5.53.0)(@types/node@26.0.0)(postcss@8.5.15)(search-insights@2.17.3)(typescript@5.9.3)
+        version: 1.6.4(@algolia/client-search@5.53.0)(@types/node@26.0.0)(postcss@8.5.16)(search-insights@2.17.3)(typescript@5.9.3)
       vitest:
         specifier: ^4.1.9
         version: 4.1.9(@types/node@26.0.0)(jsdom@29.1.1)(vite@7.3.5(@types/node@26.0.0)(jiti@2.6.1)(tsx@4.22.4)(yaml@2.9.0))
@@ -2392,8 +2392,8 @@ packages:
     resolution: {integrity: sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ==}
     engines: {node: '>=18'}
 
-  globals@17.6.0:
-    resolution: {integrity: sha512-sepffkT8stwnIYbsMBpoCHJuJM5l98FUF2AnE07hfvE0m/qp3R586hw4jF4uadbhvg1ooIdzuu7CsfD2jzCaNA==}
+  globals@17.7.0:
+    resolution: {integrity: sha512-Czmyns5dUsq4seFBR/Kdydhmo8y9kC79hiSkPn0YcGtNnYWnrgt0vjrSjx9tspoDGWm2CMarffRuLjM4xUz8xg==}
     engines: {node: '>=18'}
 
   globby@16.2.0:
@@ -2838,6 +2838,11 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
+  nanoid@3.3.15:
+    resolution: {integrity: sha512-y7Wygv/7mEOvxTuEQDB8StXdMRBWf1kR/tlhAzBRUFkB2jfcLOAxO/SHmOO2zgz1pVgK29/kyupn059/bCHdjA==}
+    engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
+    hasBin: true
+
   natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
 
@@ -2973,6 +2978,10 @@ packages:
 
   postcss@8.5.15:
     resolution: {integrity: sha512-FfR8sjd4em2T6fb3I2MwAJU7HWVMr9zba+enmQeeWFfCbm+UOC/0X4DS8XtpUTMwWMGbjKYP7xjfNekzyGmB3A==}
+    engines: {node: ^10 || ^12 || >=14}
+
+  postcss@8.5.16:
+    resolution: {integrity: sha512-vuwillviilfKZsg0VGj5R/YwwcHx4SLsIOI/7K6mQkWx+l5cUHTjj5g0AasTBcyXsbfTgrwsUNmVUb5xVwyPwg==}
     engines: {node: ^10 || ^12 || >=14}
 
   preact@10.29.2:
@@ -5761,7 +5770,7 @@ snapshots:
 
   globals@14.0.0: {}
 
-  globals@17.6.0: {}
+  globals@17.7.0: {}
 
   globby@16.2.0:
     dependencies:
@@ -6328,6 +6337,8 @@ snapshots:
 
   nanoid@3.3.12: {}
 
+  nanoid@3.3.15: {}
+
   natural-compare@1.4.0: {}
 
   nopt@7.2.1:
@@ -6464,6 +6475,12 @@ snapshots:
   postcss@8.5.15:
     dependencies:
       nanoid: 3.3.12
+      picocolors: 1.1.1
+      source-map-js: 1.2.1
+
+  postcss@8.5.16:
+    dependencies:
+      nanoid: 3.3.15
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
@@ -6920,7 +6937,7 @@ snapshots:
       esbuild: 0.27.7
       fdir: 6.5.0(picomatch@4.0.4)
       picomatch: 4.0.4
-      postcss: 8.5.15
+      postcss: 8.5.16
       rollup: 4.62.2
       tinyglobby: 0.2.17
     optionalDependencies:
@@ -6930,7 +6947,7 @@ snapshots:
       tsx: 4.22.4
       yaml: 2.9.0
 
-  vitepress@1.6.4(@algolia/client-search@5.53.0)(@types/node@26.0.0)(postcss@8.5.15)(search-insights@2.17.3)(typescript@5.9.3):
+  vitepress@1.6.4(@algolia/client-search@5.53.0)(@types/node@26.0.0)(postcss@8.5.16)(search-insights@2.17.3)(typescript@5.9.3):
     dependencies:
       '@docsearch/css': 3.8.2
       '@docsearch/js': 3.8.2(@algolia/client-search@5.53.0)(search-insights@2.17.3)
@@ -6951,7 +6968,7 @@ snapshots:
       vite: 5.4.21(@types/node@26.0.0)
       vue: 3.5.38(typescript@5.9.3)
     optionalDependencies:
-      postcss: 8.5.15
+      postcss: 8.5.16
     transitivePeerDependencies:
       - '@algolia/client-search'
       - '@types/node'
