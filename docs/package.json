@@ -16,7 +16,7 @@
     "@vue/test-utils": "^2.4.11",
     "comma-separated-tokens": "^2.0.3",
     "jsdom": "^29.1.1",
-    "mermaid": "^11.15.0",
+    "mermaid": "^11.16.0",
     "vitepress": "^1.6.4",
     "vitest": "^4.1.9",
     "vue": "^3.5.38"
