@@ -61,7 +61,7 @@
   "devDependencies": {
     "@commitlint/cli": "^21.2.0",
     "@commitlint/config-conventional": "^21.2.0",
-    "@eslint/js": "^9.39.4",
+    "@eslint/js": "^9.39.5",
     "@types/jsdom": "^28.0.3",
     "eslint": "^9.39.4",
     "eslint-config-prettier": "^9.1.2",
