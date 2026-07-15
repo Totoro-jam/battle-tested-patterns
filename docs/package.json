@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.61.1",
-    "@vitejs/plugin-vue": "^6.0.7",
+    "@vitejs/plugin-vue": "^6.0.8",
     "@vue/test-utils": "^2.4.11",
     "comma-separated-tokens": "^2.0.3",
     "jsdom": "^29.1.1",
