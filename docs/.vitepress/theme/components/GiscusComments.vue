@@ -21,11 +21,22 @@ const container = ref<HTMLElement | null>(null);
 const theme = computed(() => (isDark.value ? 'dark' : 'light'));
 const giscusLang = computed(() => (lang.value === 'zh-CN' ? 'zh-CN' : 'en'));
 
-// giscus resolves `mapping: "pathname"` → discussion exactly once, when the
-// widget is created. On an SPA navigation the existing iframe keeps the
-// previous page's thread, so we tear the old widget down and rebuild it from
-// scratch. The new script re-reads `location.pathname`, which includes the
-// `/zh/` locale prefix, so EN and ZH resolve to separate discussions.
+// Explicit discussion key, normalized exactly like giscus's `pathname` mapping
+// so EN and ZH pages map to separate, stable threads:
+//   /guide/what-is-this.html  ->  guide/what-is-this
+//   /zh/patterns/bitmask/     ->  zh/patterns/bitmask/
+//
+// `mapping: "specific"` + an explicit `term` is the reliable way to handle SPA
+// navigation. giscus reads `term` verbatim and `setConfig: { term }` retargets
+// the live widget in place, so EN/ZH (and any two pages) switch threads without
+// a teardown/rebuild race. `pathname` instead derives the term from
+// `location.pathname` only at widget creation, so retargeting forced a full
+// remount — which is what mixed the EN and ZH threads together.
+const term = computed(() => {
+  const path = route.path;
+  return path.length < 2 ? 'index' : path.substring(1).replace(/\.\w+$/, '');
+});
+
 function mountGiscus() {
   if (!container.value) return;
   container.value.innerHTML = '';
@@ -37,7 +48,8 @@ function mountGiscus() {
   script.dataset.repoId = GISCUS_CONFIG.repoId;
   script.dataset.category = GISCUS_CONFIG.category;
   script.dataset.categoryId = GISCUS_CONFIG.categoryId;
-  script.dataset.mapping = 'pathname';
+  script.dataset.mapping = 'specific';
+  script.dataset.term = term.value;
   script.dataset.strict = '0';
   script.dataset.reactionsEnabled = '1';
   script.dataset.emitMetadata = '0';
@@ -50,26 +62,27 @@ function mountGiscus() {
 
 onMounted(mountGiscus);
 
-// Theme is a pure visual toggle giscus applies instantly via `setConfig` —
-// remounting here would drop an in-progress comment. Route changes, by
-// contrast, change which discussion the page maps to, and `setConfig` cannot
-// retarget that (its message interface has no `mapping` field, so a `term`
-// sent while in `pathname` mode is unreliable). Those must remount.
-watch(theme, (value) => {
+function sendConfig(config: Record<string, unknown>) {
   const iframe = container.value?.querySelector<HTMLIFrameElement>('iframe.giscus-frame');
-  iframe?.contentWindow?.postMessage(
-    { giscus: { setConfig: { theme: value } } },
-    'https://giscus.app',
-  );
-});
+  iframe?.contentWindow?.postMessage({ giscus: { setConfig: config } }, 'https://giscus.app');
+}
 
-watch(
-  () => route.path,
-  () => {
-    // Defer one tick so the URL has settled before giscus re-reads pathname.
+// Theme is a pure visual toggle giscus applies instantly via `setConfig` —
+// remounting here would drop an in-progress comment.
+watch(theme, (value) => sendConfig({ theme: value }));
+
+// On navigation, retarget the discussion and the widget's UI language in place.
+// `setConfig` is the fast path and keeps any in-progress text; if the iframe
+// hasn't finished lazy-loading yet, fall back to a remount so the fresh
+// `data-term` / `data-lang` are picked up on its initial load.
+watch([term, giscusLang], () => {
+  const iframe = container.value?.querySelector<HTMLIFrameElement>('iframe.giscus-frame');
+  if (iframe?.contentWindow) {
+    sendConfig({ term: term.value, lang: giscusLang.value });
+  } else {
     nextTick(mountGiscus);
-  },
-);
+  }
+});
 </script>
 
 <template>
