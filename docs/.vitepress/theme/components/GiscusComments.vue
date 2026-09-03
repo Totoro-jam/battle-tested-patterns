@@ -21,16 +21,14 @@ const container = ref<HTMLElement | null>(null);
 const theme = computed(() => (isDark.value ? 'dark' : 'light'));
 const giscusLang = computed(() => (lang.value === 'zh-CN' ? 'zh-CN' : 'en'));
 
-function sendMessage(message: Record<string, unknown>) {
-  const iframe = container.value?.querySelector<HTMLIFrameElement>('iframe.giscus-frame');
-  iframe?.contentWindow?.postMessage({ giscus: message }, 'https://giscus.app');
-}
-
+// giscus resolves `mapping: "pathname"` → discussion exactly once, when the
+// widget is created. On an SPA navigation the existing iframe keeps the
+// previous page's thread, so we tear the old widget down and rebuild it from
+// scratch. The new script re-reads `location.pathname`, which includes the
+// `/zh/` locale prefix, so EN and ZH resolve to separate discussions.
 function mountGiscus() {
   if (!container.value) return;
-  // giscus reads its config from the script tag's `data-*` attributes and
-  // injects its iframe in place of the script, so the script must live inside
-  // the wrapper (not <head>) to land in the right spot.
+  container.value.innerHTML = '';
   const script = document.createElement('script');
   script.src = 'https://giscus.app/client.js';
   script.async = true;
@@ -52,21 +50,26 @@ function mountGiscus() {
 
 onMounted(mountGiscus);
 
-// Sync the widget theme when the site theme toggles.
-watch(theme, (value) => sendMessage({ setConfig: { theme: value } }));
+// Theme is a pure visual toggle giscus applies instantly via `setConfig` —
+// remounting here would drop an in-progress comment. Route changes, by
+// contrast, change which discussion the page maps to, and `setConfig` cannot
+// retarget that (its message interface has no `mapping` field, so a `term`
+// sent while in `pathname` mode is unreliable). Those must remount.
+watch(theme, (value) => {
+  const iframe = container.value?.querySelector<HTMLIFrameElement>('iframe.giscus-frame');
+  iframe?.contentWindow?.postMessage(
+    { giscus: { setConfig: { theme: value } } },
+    'https://giscus.app',
+  );
+});
 
-// VitePress is an SPA: on navigation the URL changes without a page reload,
-// so giscus's `pathname` mapping would keep showing the previous page's
-// thread. Re-point it to the new pathname once history has settled.
 watch(
   () => route.path,
   () => {
-    nextTick(() => sendMessage({ setConfig: { term: window.location.pathname } }));
+    // Defer one tick so the URL has settled before giscus re-reads pathname.
+    nextTick(mountGiscus);
   },
 );
-
-// Match the widget UI language to the active locale on in-session locale switch.
-watch(giscusLang, (value) => sendMessage({ setConfig: { lang: value } }));
 </script>
 
 <template>
