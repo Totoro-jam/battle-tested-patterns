@@ -41,3 +41,4 @@ React 的协调器是低级模式组合的典范。前五个模式全部出现�
 
 - [React 源码 (GitHub)](https://github.com/facebook/react)
 - [React Fiber 架构](https://github.com/acdlite/react-fiber-architecture)
+- [React 面试准备：7/14/30 天学习计划（FrontendAtlas）](https://frontendatlas.com/guides/framework-prep/react-prep-path)

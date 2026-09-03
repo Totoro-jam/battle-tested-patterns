@@ -41,3 +41,4 @@ For a deep dive into how three of these patterns interlock — bitmask, min-heap
 
 - [React Source Code (GitHub)](https://github.com/facebook/react)
 - [React Fiber Architecture](https://github.com/acdlite/react-fiber-architecture)
+- [How to Prepare for a React Interview: 7/14/30-Day Plan (FrontendAtlas)](https://frontendatlas.com/guides/framework-prep/react-prep-path)
