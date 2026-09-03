@@ -712,3 +712,17 @@ pre.mermaid[data-mermaid-status]::after {
     display: none;
   }
 }
+
+/* ── giscus comments ────────────────────────────────────────────────────────
+   Separated from the article body with a divider and top spacing. The iframe
+   is lazy-loaded, so reserve width up front to avoid a layout jump. */
+.giscus-comments {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--vp-c-divider);
+}
+
+.giscus-comments .giscus,
+.giscus-comments iframe.giscus-frame {
+  width: 100%;
+}

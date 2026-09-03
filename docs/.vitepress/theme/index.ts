@@ -11,6 +11,7 @@ import DifficultyBadge from './components/DifficultyBadge.vue';
 import CompositionFlow from './components/CompositionFlow.vue';
 import DecisionTree from './components/DecisionTree.vue';
 import BackToTop from './components/BackToTop.vue';
+import GiscusComments from './components/GiscusComments.vue';
 import { initMermaidLoader } from './mermaid-loader';
 import { setupChunkErrorHandler } from './chunk-error-handler';
 import './custom.css';
@@ -102,6 +103,11 @@ export default {
   Layout() {
     return h(DefaultTheme.Layout, null, {
       'layout-bottom': () => h(BackToTop),
+      // Comments render on every doc page, below the edit-info + prev/next
+      // footer. This matches the community convention (`doc-after` sits
+      // outside the <footer>, after the pagination). The home page
+      // (layout: home) skips this slot entirely.
+      'doc-after': () => h(GiscusComments),
     });
   },
   enhanceApp({ app, router }) {
