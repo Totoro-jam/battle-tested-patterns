@@ -25,7 +25,8 @@ const giscusLang = computed(() => (lang.value === 'zh-CN' ? 'zh-CN' : 'en'));
 // rebuild, so EN/ZH (and any two pages) switch threads cleanly.
 const term = computed(() => {
   const path = route.path;
-  return path.length < 2 ? 'index' : path.substring(1).replace(/\.\w+$/, '');
+  const rawKey = path.length < 2 ? 'index' : path.substring(1).replace(/\.\w+$/, '');
+  return `${lang.value}:${rawKey}`;
 });
 </script>
 
@@ -37,7 +38,7 @@ const term = computed(() => {
     category-id="DIC_kwDOSuhOZc4C_AIc"
     mapping="specific"
     :term="term"
-    strict="0"
+    strict="1"
     reactions-enabled="1"
     emit-metadata="0"
     input-position="top"
