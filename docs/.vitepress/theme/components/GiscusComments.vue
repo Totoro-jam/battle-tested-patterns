@@ -30,19 +30,29 @@ const term = computed(() => {
 </script>
 
 <template>
-  <Giscus
-    repo="Totoro-jam/battle-tested-patterns"
-    repo-id="R_kgDOSuhOZQ"
-    category="Announcements"
-    category-id="DIC_kwDOSuhOZc4C_AIc"
-    mapping="specific"
-    :term="term"
-    strict="1"
-    reactions-enabled="1"
-    emit-metadata="0"
-    input-position="top"
-    :theme="theme"
-    :lang="giscusLang"
-    loading="lazy"
-  />
+  <div class="giscus-container">
+    <Giscus
+      repo="Totoro-jam/battle-tested-patterns"
+      repo-id="R_kgDOSuhOZQ"
+      category="Announcements"
+      category-id="DIC_kwDOSuhOZc4C_AIc"
+      mapping="specific"
+      :term="term"
+      strict="1"
+      reactions-enabled="1"
+      emit-metadata="0"
+      input-position="top"
+      :theme="theme"
+      :lang="giscusLang"
+      loading="lazy"
+    />
+  </div>
 </template>
+
+<style scoped>
+.giscus-container {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--vp-c-divider);
+}
+</style>
