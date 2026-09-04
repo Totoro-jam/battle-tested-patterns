@@ -33,11 +33,14 @@ export default defineConfig({
     const isZh = pageData.relativePath.startsWith('zh/');
     const enPath = isZh ? pageData.relativePath.replace(/^zh\//, '') : pageData.relativePath;
     const zhPath = isZh ? pageData.relativePath : `zh/${pageData.relativePath}`;
+    // Canonical must match this page's language-specific URL; never point ZH→EN.
+    // This avoids duplicate content, preserves hreflang, and stays consistent with og:url.
+    const selfPath = isZh ? zhPath : enPath;
     head.push([
       'link',
       {
         rel: 'canonical',
-        href: `${SITE_URL}/${enPath.replace(/index\.md$/, '').replace(/\.md$/, '')}`,
+        href: `${SITE_URL}/${selfPath.replace(/index\.md$/, '').replace(/\.md$/, '')}`,
       },
     ]);
     head.push([
@@ -52,7 +55,7 @@ export default defineConfig({
       'link',
       {
         rel: 'alternate',
-        hreflang: 'zh',
+        hreflang: 'zh-CN',
         href: `${SITE_URL}/${zhPath.replace(/index\.md$/, '').replace(/\.md$/, '')}`,
       },
     ]);
