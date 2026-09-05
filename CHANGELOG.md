@@ -4,6 +4,32 @@ All notable changes to this project will be documented in this file.
 
 See [commit history](https://github.com/Totoro-jam/battle-tested-patterns/commits/main) for detailed changes.
 
+## [1.17.0](https://github.com/Totoro-jam/battle-tested-patterns/compare/v1.16.2...v1.17.0) (2026-09-04)
+
+
+### Features
+
+* add giscus comments to doc pages ([d996ae1](https://github.com/Totoro-jam/battle-tested-patterns/commit/d996ae193afcde0e115e0019a23042b59020f050))
+
+
+### Bug Fixes
+
+* giscus  en/zh ([98c6976](https://github.com/Totoro-jam/battle-tested-patterns/commit/98c69767076d4632882bad82c229f53fe3f20ca6))
+* remount giscus on route change to keep EN/ZH threads separate ([1c70ddf](https://github.com/Totoro-jam/battle-tested-patterns/commit/1c70ddf927cc20cb6ffaa61d202682552ee1e58c))
+* target giscus threads by explicit term instead of pathname remount ([f6abc02](https://github.com/Totoro-jam/battle-tested-patterns/commit/f6abc0281071c3327ba7c7b21113cf4363348db2))
+* tern as const ([46b9325](https://github.com/Totoro-jam/battle-tested-patterns/commit/46b93255f53acd1cc17047ce65d858a8aac9df3f))
+* wrap Giscus component in a container for improved styling ([5991972](https://github.com/Totoro-jam/battle-tested-patterns/commit/59919723987ed24a1a29af4e6bf8311f631317bd))
+
+
+### Documentation
+
+* migrate site to patterns.totorojam.com ([3ac4299](https://github.com/Totoro-jam/battle-tested-patterns/commit/3ac4299e87ab64eb52ba6d4abbb4bd1ad40a5a5b))
+
+
+### Code Refactoring
+
+* use @giscus/vue for comments instead of hand-rolled script ([11e2982](https://github.com/Totoro-jam/battle-tested-patterns/commit/11e298229e770054d575b25ad29ed11f61c40a52))
+
 ## [1.16.2](https://github.com/Totoro-jam/battle-tested-patterns/compare/v1.16.1...v1.16.2) (2026-07-09)
 
 

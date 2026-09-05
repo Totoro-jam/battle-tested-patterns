@@ -1,6 +1,6 @@
 {
   "name": "battle-tested-patterns",
-  "version": "1.16.2",
+  "version": "1.17.0",
   "private": true,
   "description": "Battle-tested programming patterns from production codebases. Multi-language examples, precise source links, interactive visualizations.",
   "license": "MIT",
