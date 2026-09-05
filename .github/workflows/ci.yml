@@ -42,7 +42,7 @@ jobs:
           node-version: 22
           cache: pnpm
       - uses: dtolnay/rust-toolchain@stable
-      - uses: actions/setup-go@v6
+      - uses: actions/setup-go@v7
         with:
           go-version: '1.23'
           cache: false # verify-code uses a temp module; no go.sum to cache
@@ -95,7 +95,7 @@ jobs:
         with:
           node-version: 22
           cache: pnpm
-      - uses: actions/setup-go@v6
+      - uses: actions/setup-go@v7
         with:
           go-version: '1.23'
           cache-dependency-path: exercises/go/go.mod
