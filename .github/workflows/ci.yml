@@ -46,7 +46,7 @@ jobs:
         with:
           go-version: '1.23'
           cache: false # verify-code uses a temp module; no go.sum to cache
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
       - run: pnpm install --frozen-lockfile
@@ -112,7 +112,7 @@ jobs:
         with:
           node-version: 22
           cache: pnpm
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
       - run: pnpm install --frozen-lockfile
